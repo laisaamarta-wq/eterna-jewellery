@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ETERNA — Nocturne high jewellery, made to keep</title>
 <meta name="description" content="ETERNA is an online fine-jewellery house: earrings, necklaces and rings in 18k gold, emeralds and diamonds, from €1,000 a piece. Concept demo.">
-<!-- ETERNA v3.29 · piece list removed (the collection is the one catalogue) · 2026-11-13 -->
+<!-- ETERNA v3.30 · product sheet shows the piece name again (own id, no clash with the shape rail) · 2026-11-13 -->
 <script>
   (function(){var d=document.documentElement;if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion','is-starting');setTimeout(function(){d.classList.remove('is-starting')},2500);}})();
   /* Pictures load from images/ first. If a file is not there yet, the same picture loads from Higgsfield in a web size. */
@@ -871,7 +871,7 @@ footer.foot{margin-top:140px;position:relative;z-index:1;border-top:1px solid va
   <div class="sh-img"><img id="shImg" src="" alt=""></div>
   <div class="sh-body">
     <span class="lbl" id="shIx"></span>
-    <h2 class="d" id="shName"></h2>
+    <h2 class="d" id="pkName"></h2>
     <p class="small" id="shMat"></p>
     <p class="lead" id="shStory" style="color:var(--ink)"></p>
     <div id="shPrice"></div>
@@ -996,7 +996,7 @@ if(fno)fno.addEventListener('input',()=>{bandTxt.textContent=fno.value.trim()||'
 const sheet=document.getElementById('sheet');let cur=0,lastFocus=null;
 function setImg(el,name,alt,pos){el.onerror=function(){fb(this)};el.src=`images/${name}.jpg`;el.alt=alt;el.style.objectPosition=pos||'50% 50%';}
 function fillSheet(i){cur=(i+P.length)%P.length;const p=P[cur];setImg(document.getElementById('shImg'),p.img,p.n,p.pos);
- document.getElementById('shIx').textContent=`N° ${pad2(cur+1)} / ${pad2(P.length)}${p.set?' · Nocturne':''}`;document.getElementById('shName').textContent=p.n;document.getElementById('shMat').textContent=p.mat;document.getElementById('shStory').textContent=p.story;document.getElementById('shPrice').innerHTML=priceHTML(p.price,'big');
+ document.getElementById('shIx').textContent=`N° ${pad2(cur+1)} / ${pad2(P.length)}${p.set?' · Nocturne':''}`;document.getElementById('pkName').textContent=p.n;document.getElementById('shMat').textContent=p.mat;document.getElementById('shStory').textContent=p.story;document.getElementById('shPrice').innerHTML=priceHTML(p.price,'big');
  const w=document.getElementById('shWorn');w.hidden=!p.worn;if(p.worn)setImg(document.getElementById('shWornImg'),p.worn,p.n+', worn in the campaign','50% 35%');
  document.getElementById('shAdd').dataset.add=p.id;}
 function openSheet(id){lastFocus=document.activeElement;fillSheet(P.findIndex(p=>p.id===id));sheet.classList.add('open');window.__lenis&&window.__lenis.stop();document.getElementById('shClose').focus();}
